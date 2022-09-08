@@ -3,6 +3,8 @@ package fhms.trainingservice.model;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class ExerciseDay {
@@ -12,7 +14,16 @@ public class ExerciseDay {
     private Integer exerciseDayId;
     private Date exerciseDate;
     @OneToMany
-    private List<ExercisePlan> exerciseList;
+    private Set<ExercisePlan> exercisePlans;
+
+    public ExerciseDay(){
+
+    }
+
+    public ExerciseDay(Date date, Set<ExercisePlan> plans){
+        this.exerciseDate = date;
+        this.exercisePlans = plans;
+    }
 
 
     public Integer getId() {
@@ -27,11 +38,28 @@ public class ExerciseDay {
         this.exerciseDate = date;
     }
 
-    public List getExerciseList() {
-        return exerciseList;
+    public Set<ExercisePlan> getExerciseList() {
+        return exercisePlans;
     }
 
-    public void setExerciseList(List list) {
-        this.exerciseList = list;
+    public void setExerciseList(Set set) {
+        this.exercisePlans = set ;
+    }
+    public void addExercisePlan(ExercisePlan plan){
+        this.exercisePlans.add(plan);
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + exerciseDayId +
+                ", date='" + exerciseDate + '\'' +
+                ", exercise-plans='" + exercisePlans +
+                '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(exerciseDayId, exerciseDate,exercisePlans);
     }
 }

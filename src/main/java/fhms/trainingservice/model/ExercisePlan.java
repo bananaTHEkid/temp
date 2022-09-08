@@ -1,33 +1,51 @@
 package fhms.trainingservice.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
+@Entity
 public class ExercisePlan {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
-    private List<Exercise> exerciseList;
-    private String Name;
+    @OneToMany
+    private Set<Exercise> exercises;
+    private String name;
+
+    public ExercisePlan(){ }
+
+    public ExercisePlan(Set<Exercise> exercises, String name){
+        this.exercises = exercises;
+        this.name = name;
+    }
 
     public Integer getId() {
         return Id;
     }
 
-    public List<Exercise> getExerciseList() {
-        return exerciseList;
+    public Set<Exercise> getExerciseList() {
+        return exercises;
     }
 
     public void setExerciseList(List<Exercise> exerciseList) {
-        this.exerciseList = exerciseList;
+        this.exercises = exercises;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Exercise{" +
+                "id=" + Id +
+                ", name='" + name + '\'' +
+                ", exercises='" + exercises + '\'' +
+                '}';
     }
 }
