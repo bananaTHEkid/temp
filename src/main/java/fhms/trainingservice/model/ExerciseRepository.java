@@ -2,9 +2,10 @@ package fhms.trainingservice.model;
 
 
 import org.springframework.stereotype.Repository;
-import java.util.Optional;
+
+import java.util.List;
 
 @Repository
 public interface ExerciseRepository {
-    Optional<Exercise> findById(Integer id);
+    List<Exercise> findById(Integer id);
 }

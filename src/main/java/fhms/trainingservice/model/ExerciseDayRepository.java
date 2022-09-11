@@ -10,5 +10,4 @@ public interface ExerciseDayRepository {
     ExerciseDay save(ExerciseDay exerciseDay);
     void delete(ExerciseDay exerciseDay);
     Iterable<ExerciseDay> findAll();
-
 }

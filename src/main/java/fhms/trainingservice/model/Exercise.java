@@ -74,4 +74,5 @@ public class Exercise {
     public int hashCode() {
         return Objects.hash(exerciseId, exerciseName, repetitions, weight);
     }
+
 }
